@@ -1,6 +1,6 @@
-
 from json import load
-from os import getenv 
+from os import getenv
+
 path = f"{getenv('APPDATA')}\.minecraft\\versions\\version_manifest_v2.json"
 
 def parser():

@@ -1,11 +1,10 @@
+from tkinter import Menu, ttk
 
 from scr.gui.home_gui import AppHome
+from scr.gui.ops_gui import AppOps
 from scr.gui.resource_gui import AppRes
 from scr.gui.svconfig_gui import AppSvc
 from scr.gui.whitelist_gui import AppWls
-from scr.gui.ops_gui import AppOps
-from tkinter import Menu
-from tkinter import ttk
 
 
 class AppMain(ttk.Frame):

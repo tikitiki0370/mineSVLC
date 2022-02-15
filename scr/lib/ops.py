@@ -1,7 +1,6 @@
-from json import JSONDecodeError, dump, loads, load
+from json import JSONDecodeError, dump, load, loads
 from os import mkdir
 from os.path import exists
-
 from urllib.request import urlopen
 
 

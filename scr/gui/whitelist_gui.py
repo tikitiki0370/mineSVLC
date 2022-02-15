@@ -1,8 +1,7 @@
-from json import JSONDecodeError
-from tkinter import ttk
 import tkinter as tk
-from tkinter import font
-from tkinter import messagebox
+from json import JSONDecodeError
+from tkinter import font, messagebox, ttk
+
 from ..lib.whitelist import BuildWls
 
 

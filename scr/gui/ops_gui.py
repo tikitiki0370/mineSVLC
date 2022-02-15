@@ -1,14 +1,8 @@
-
-from json import JSONDecodeError
-from operator import truediv
-from tkinter import ttk
 import tkinter as tk
-from tkinter import font
-from tkinter import messagebox
+from json import JSONDecodeError
+from tkinter import font, messagebox, ttk
 
 from ..lib.ops import BuildOps
-
-
 
 
 class AppOps(ttk.Frame):

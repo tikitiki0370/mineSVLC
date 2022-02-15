@@ -1,21 +1,10 @@
-
-
-from textwrap import indent
-from tkinter import filedialog, messagebox
-
-from ..lib.manifest_parser import parser
-from ..lib.build_sv import BuildSV
-
-import tkinter as tk
-from tkinter import ttk
-from tkinter import font
 import asyncio
+import tkinter as tk
 from glob import glob
+from tkinter import filedialog, font, messagebox, ttk
 
-
-
-
-
+from ..lib.build_sv import BuildSV
+from ..lib.manifest_parser import parser
 
 
 class AppHome(ttk.Frame):

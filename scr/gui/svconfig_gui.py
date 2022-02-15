@@ -1,16 +1,8 @@
-
 import json
-import re
-
-from tkinter import messagebox, ttk
 import tkinter as tk
-from tkinter import font
+from tkinter import font, messagebox, ttk
 
-
-from ..lib.server_properties import build_svpr
-from ..lib.server_properties import load_file
-
-
+from ..lib.server_properties import build_svpr, load_file
 
 
 class AppSvc(ttk.Frame):

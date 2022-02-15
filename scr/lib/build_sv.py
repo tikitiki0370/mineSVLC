@@ -1,14 +1,8 @@
-
-
-from os import makedirs
-from shutil import rmtree
-from shutil import copytree
-from shutil import copy
-from os import rename
-from urllib.request import urlopen
-from urllib.request import urlretrieve
-from json import loads
 from hashlib import sha1
+from json import loads
+from os import makedirs, rename
+from shutil import copy, copytree, rmtree
+from urllib.request import urlopen, urlretrieve
 
 
 class BuildSV():
