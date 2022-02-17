@@ -14,6 +14,5 @@ if __name__ == '__main__':
     gui = AppMain(master=root)
     gui.rowconfigure(0, weight=1)
     gui.columnconfigure(0, weight=1)
-
     gui.mainloop()
 
