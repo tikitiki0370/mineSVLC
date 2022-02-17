@@ -50,17 +50,19 @@ class BuildOps():
     def __serch_player_uuid(self, name):
         api_path = f"https://api.mojang.com/users/profiles/minecraft/{name}"
         data = loads(urlopen(api_path).read().decode("utf8"))
+        temp = data["id"]
+        data["id"] = f"{temp[:8]}-{temp[8:12]}-{temp[12:16]}-{temp[16:20]}-{temp[20:]}"
         return data
 
     def deta_del(self, name, level, bpl):
         data = self.__serch_player_uuid(name)
-        data_ls = {"uuid":data["id"].replace("-", ""), "name":data["name"], "level":level, "bypassesPlayerLimit":bpl}
+        data_ls = {"uuid":data["id"], "name":data["name"], "level":level, "bypassesPlayerLimit":bpl}
         if data_ls in self.write_data: 
             self.write_data.remove(data_ls)
 
     def deta_add(self, name, level, bpl):
         data = self.__serch_player_uuid(name)
-        data_ls = {"uuid":data["id"].replace("-", ""), "name":data["name"], "level":level, "bypassesPlayerLimit":bpl}
+        data_ls = {"uuid":data["id"], "name":data["name"], "level":level, "bypassesPlayerLimit":bpl}
         if data_ls in self.write_data: 
             self.write_data.remove(data_ls)
             self.write_data.append(data_ls)
