@@ -50,13 +50,13 @@ class BuildWls():
 
     def deta_del(self, name):
         data = self.__serch_player_uuid(name)
-        data_ls = {"uuid":data["id"], "name":data["name"]}
+        data_ls = {"uuid":data["id"].replace("-", ""), "name":data["name"]}
         if data_ls in self.write_data: 
             self.write_data.remove(data_ls)
 
     def deta_add(self, name):
         data = self.__serch_player_uuid(name)
-        data_ls = {"uuid":data["id"], "name":data["name"]}
+        data_ls = {"uuid":data["id"].replace("-", ""), "name":data["name"]}
         if data_ls in self.write_data: 
             self.write_data.remove(data_ls)
             self.write_data.append(data_ls)
