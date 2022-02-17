@@ -32,7 +32,7 @@
         ],
         "level-name": [
             {"text": "level-name"},
-            {"width": 30, "textvariable": ["levelname", ""]}
+            {"width": 30, "textvariable": ["levelname", "world"]}
         ],
         "generator-settings": [
             {"text": "level-seed"},
