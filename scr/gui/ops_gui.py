@@ -96,7 +96,7 @@ class AppOps(ttk.Frame):
         if not self.build_ops:
             self.build_ops = BuildOps()
         try:
-            self.build_ops.deta_add(self.plrname.get(), self.plrlevel.get(), str(self.plrbpl.get()))
+            self.build_ops.deta_add(self.plrname.get(), self.plrlevel.get(), self.plrbpl.get())
             self.build_ops.deta_collback(self._update_tree)
             self.plrname.set("")
             self.plrlevel.set(1)
@@ -113,7 +113,7 @@ class AppOps(ttk.Frame):
         if not self.build_ops:
             self.build_ops = BuildOps()
         try:
-            self.build_ops.deta_del(self.plrname.get(), self.plrlevel.get(), str(self.plrbpl.get()))
+            self.build_ops.deta_del(self.plrname.get(), self.plrlevel.get(), self.plrbpl.get())
             self.build_ops.deta_collback(self._update_tree)
             self.plrname.set("")
             self.plrlevel.set(1)
