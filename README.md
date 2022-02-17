@@ -7,6 +7,7 @@
 [@niwaniwa_tikinn](https://twitter.com/niwaniwa_tikinn)
 
 
-## 使い方
+## 使い方  
+動作にはMinecraft公式ランチャーを利用することが必要です  
 必ず同じディレクトリに __svcnfdata.json__ を置いてください  
 後日記載
