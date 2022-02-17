@@ -218,6 +218,7 @@ class AppHome(ttk.Frame):
             self.build_buildbutton["state"] = tk.NORMAL
             self.popup.destroy()
         except Exception as e:
+            self.build_buildbutton["state"] = tk.NORMAL
             messagebox.showerror("",f"{e}")
 
     def set_place(self):
