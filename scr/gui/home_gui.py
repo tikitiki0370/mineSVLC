@@ -216,7 +216,11 @@ class AppHome(ttk.Frame):
                 )
             del self.builds
             self.build_buildbutton["state"] = tk.NORMAL
-            self.popup.destroy()
+            try:
+                self.popup.destroy()
+            except:
+                pass
+            messagebox.showinfo("","作成しました")
         except Exception as e:
             self.build_buildbutton["state"] = tk.NORMAL
             messagebox.showerror("",f"{e}")
