@@ -21,22 +21,22 @@ class BuildWls():
 
     def load_whitelist(self, file_name):
         self.__file_close()
-        self.file = open(f"./whitelist/{file_name}.json", mode="r")
+        self.file = open(f"./data/whitelist/{file_name}.json", mode="r")
         try:
             self.write_data = load(self.file)
         except JSONDecodeError:
             pass
         self.__file_close()
-        self.file = open(f"./whitelist/{file_name}.json", mode="w")
+        self.file = open(f"./data/whitelist/{file_name}.json", mode="w")
 
     def _open_editfile(self, file_name, loop_count=0):
         self.__file_close()
-        if not exists("./whitelist"):
-            mkdir("./whitelist")
-            self.file = open(f"./whitelist/{file_name}.json", mode="w")
+        if not exists("./data/whitelist"):
+            mkdir("./data/whitelist")
+            self.file = open(f"./data/whitelist/{file_name}.json", mode="w")
             return loop_count
-        elif not exists(f"./whitelist/{file_name}.json"):
-            self.file = open(f"./whitelist/{file_name}.json", mode="w")
+        elif not exists(f"./data/whitelist/{file_name}.json"):
+            self.file = open(f"./data/whitelist/{file_name}.json", mode="w")
             return loop_count
         else:
             if loop_count != 0:

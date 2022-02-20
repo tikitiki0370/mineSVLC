@@ -100,7 +100,7 @@ class AppHome(ttk.Frame):
         self.sv_cnftextbox.grid(row=1, column=0)
 
     def _update_cnf(self):
-        value = [i[16:i.index(".", 16)] for i in glob("./sv_properties/*.properties")]
+        value = [i[16:i.index(".", 16)] for i in glob("./data/sv_properties/*.properties")]
         self.sv_cnftextbox["values"] = value
 
     def set_sv_mem(self):

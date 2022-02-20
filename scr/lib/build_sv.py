@@ -58,17 +58,17 @@ class BuildSV():
     def _set_property(self, name):
         if not name:
             return
-        copy(f"./sv_properties/{name}.properties", "./server/temp/server.properties")
+        copy(f"./data/sv_properties/{name}.properties", "./server/temp/server.properties")
 
     def _set_ops(self, name):
         if not name:
             return
-        copy(f"./ops/{name}.json", "./server/temp/ops.json")
+        copy(f"./data/ops/{name}.json", "./server/temp/ops.json")
 
     def _set_whitelist(self, name):
         if not name:
             return
-        copy(f"./ops/{name}.json", "./server/temp/whitelist.json")
+        copy(f"./data/ops/{name}.json", "./server/temp/whitelist.json")
 
     def _set_worldfile(self, world_path):
         if world_path:

@@ -196,7 +196,7 @@ class AppSvc(ttk.Frame):
         self.vlr_dict = {}
 
 
-        with open("svcnfdata.json", "r") as f:
+        with open("./data/config/svcnfdata.json", "r") as f:
             self.gui_data = json.load(f)
 
         for i in self.gui_data:

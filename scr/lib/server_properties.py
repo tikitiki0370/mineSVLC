@@ -22,14 +22,14 @@ def build_svpr(name, payload):
         value = str(payload[temp])
         write_str += f"{i}={value.lower()}\n"
 
-    if not exists("./sv_properties"):
-        mkdir("./sv_properties/")
-    with open(f"./sv_properties/{name}.properties", "w") as f:
+    if not exists("./data/sv_properties"):
+        mkdir("./data/sv_properties/")
+    with open(f"./data/sv_properties/{name}.properties", "w") as f:
         f.write(write_str)
 
 def load_file(name, func):
     return_dict = {}
-    with open(f"./sv_properties/{name}.properties") as f:
+    with open(f"./data/sv_properties/{name}.properties") as f:
         read_str = f.read()
         for i in read_str.split("\n"):
             if not i:
