@@ -100,7 +100,7 @@ class AppHome(ttk.Frame):
         self.sv_cnftextbox.grid(row=1, column=0)
 
     def _update_cnf(self):
-        value = [i[16:i.index(".", 16)] for i in glob("./data/sv_properties/*.properties")]
+        value = [i[21:i.index(".", 21)] for i in glob("./data/sv_properties/*.properties")]
         self.sv_cnftextbox["values"] = value
 
     def set_sv_mem(self):
@@ -140,7 +140,7 @@ class AppHome(ttk.Frame):
         self.sv_opspulldown.grid(row=1, column=0)
 
     def _update_ops(self):
-        value = [i[6:i.index(".", 6)] for i in glob("./ops/*.json")]
+        value = [i[11:i.index(".", 11)] for i in glob("./data/ops/*.json")]
         self.sv_opspulldown["values"] = value
 
     def set_sv_white(self):
@@ -151,7 +151,7 @@ class AppHome(ttk.Frame):
         self.sv_whitepulldown.grid(row=1, column=0)
 
     def _update_white(self):
-        value = [i[12:i.index(".", 12)] for i in glob("./whitelist/*.json")]
+        value = [i[17:i.index(".", 17)] for i in glob("./data/whitelist/*.json")]
         self.sv_whitepulldown["values"] = value
 
     def set_st_stsets(self):

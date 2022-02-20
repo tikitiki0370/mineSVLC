@@ -27,11 +27,12 @@ class BuildSV():
         print(self.download_count * self.download_blocksize)
 
 
-    def _file_download(self, download_path):
+    def _file_download(self, download_path, server_version):
         #サーバーダウンロードpath取得
         data = loads(urlopen(download_path).read().decode("utf8"))
         download_path = data["downloads"]["server"]["url"]
         download_hash = data["downloads"]["server"]["sha1"]
+        
         #サーバーダウンロード
         urlretrieve(download_path, "server/temp/server.jar", self.collbackpoint)
         #ハッシュチェック
@@ -78,7 +79,7 @@ class BuildSV():
     def sv_build(self, folder_name, file_url, server_version, memor_min, memor_max, 
                     arg_jvm=None, server_property=None, world_path=None, server_ops=None, server_whitelist=None, set_bef=None, set_aft=None, collback=None):
         self.collbackpoint = collback
-        self._file_download(file_url)
+        self._file_download(file_url, server_version)
         self._mkbatfile(memor_min, memor_max, set_bef, set_aft)
         self._set_worldfile(world_path)
         self._set_property(server_property)
