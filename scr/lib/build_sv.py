@@ -27,11 +27,12 @@ class BuildSV():
         print(self.download_count * self.download_blocksize)
 
 
-    def _file_download(self, download_path):
+    def _file_download(self, download_path, server_version):
         #サーバーダウンロードpath取得
         data = loads(urlopen(download_path).read().decode("utf8"))
         download_path = data["downloads"]["server"]["url"]
         download_hash = data["downloads"]["server"]["sha1"]
+        
         #サーバーダウンロード
         urlretrieve(download_path, "server/temp/server.jar", self.collbackpoint)
         #ハッシュチェック
@@ -58,17 +59,17 @@ class BuildSV():
     def _set_property(self, name):
         if not name:
             return
-        copy(f"./sv_properties/{name}.properties", "./server/temp/server.properties")
+        copy(f"./data/sv_properties/{name}.properties", "./server/temp/server.properties")
 
     def _set_ops(self, name):
         if not name:
             return
-        copy(f"./ops/{name}.json", "./server/temp/ops.json")
+        copy(f"./data/ops/{name}.json", "./server/temp/ops.json")
 
     def _set_whitelist(self, name):
         if not name:
             return
-        copy(f"./ops/{name}.json", "./server/temp/whitelist.json")
+        copy(f"./data/ops/{name}.json", "./server/temp/whitelist.json")
 
     def _set_worldfile(self, world_path):
         if world_path:
@@ -78,7 +79,7 @@ class BuildSV():
     def sv_build(self, folder_name, file_url, server_version, memor_min, memor_max, 
                     arg_jvm=None, server_property=None, world_path=None, server_ops=None, server_whitelist=None, set_bef=None, set_aft=None, collback=None):
         self.collbackpoint = collback
-        self._file_download(file_url)
+        self._file_download(file_url, server_version)
         self._mkbatfile(memor_min, memor_max, set_bef, set_aft)
         self._set_worldfile(world_path)
         self._set_property(server_property)
