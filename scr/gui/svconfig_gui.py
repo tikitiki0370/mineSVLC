@@ -17,7 +17,7 @@ class AppSvc(ttk.Frame):
         self.label = font.Font(size=10)
 
         self.pj = ttk.LabelFrame(self, text="プロジェクト")
-        self.setting = ttk.LabelFrame(self, text="プロジェクト")
+        self.setting = ttk.LabelFrame(self, text="操作")
         self.save = ttk.Frame(self)
 
 
