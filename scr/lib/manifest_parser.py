@@ -9,8 +9,8 @@ def parser():
         load_file = open(path,"r")
         load_json = load(load_file)
         load_file.close()
-    except FileNotFoundError as e:
-        return e
+    except FileNotFoundError:
+        raise FileNotFoundError
 
     #辞書取り出し
     lat_output = load_json["latest"]

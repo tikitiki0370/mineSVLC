@@ -66,7 +66,10 @@ class AppHome(ttk.Frame):
         else:
             self.sv_vertextbox["values"] = self.ver_snapshot
     def load_verls(self):
-        ver_release, ver_snapshot, build_url = parser()
+        try:
+            ver_release, ver_snapshot, build_url = parser()
+        except FileNotFoundError:
+            messagebox.showerror("ファイルが存在しません","マインクラフトランチャーが必要です")
         self.ver_release = ver_release
         self.ver_snapshot = ver_snapshot
         self.build_url = build_url
