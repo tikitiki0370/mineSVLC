@@ -17,7 +17,7 @@ class AppSvc(ttk.Frame):
         self.label = font.Font(size=10)
 
         self.pj = ttk.LabelFrame(self, text="プロジェクト")
-        self.setting = ttk.LabelFrame(self, text="プロジェクト")
+        self.setting = ttk.LabelFrame(self, text="操作")
         self.save = ttk.Frame(self)
 
 
@@ -196,7 +196,7 @@ class AppSvc(ttk.Frame):
         self.vlr_dict = {}
 
 
-        with open("svcnfdata.json", "r") as f:
+        with open("./data/config/svcnfdata.json", "r") as f:
             self.gui_data = json.load(f)
 
         for i in self.gui_data:
