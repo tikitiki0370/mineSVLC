@@ -11,10 +11,7 @@ class BuildOps():
         self.loop_count = 0
 
     def __del__(self):
-        try:
-            self.file.close()
-        except:
-            pass
+        self.__file_close()
 
 
     def __file_close(self):
