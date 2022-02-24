@@ -217,13 +217,16 @@ class AppHome(ttk.Frame):
                 set_aft=self.st_stsetstext_aft.get('1.0', 'end'),
                 collback=self._printsarg
                 )
-            del self.builds
             self.build_buildbutton["state"] = tk.NORMAL
             try:
                 self.popup.destroy()
             except:
                 pass
-            messagebox.showinfo("","作成しました")
+            if self.builds.rename_er == 0:
+                messagebox.showinfo("","作成しました")
+            else:
+                messagebox.showinfo("",f"同じ名前が存在したため{self.pjname.get()}({self.builds.rename_er})として作成しました")
+            del self.builds
         except Exception as e:
             self.build_buildbutton["state"] = tk.NORMAL
             messagebox.showerror("",f"{e}")

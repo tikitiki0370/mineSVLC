@@ -24,8 +24,20 @@ def build_svpr(name, payload):
 
     if not exists("./data/sv_properties"):
         mkdir("./data/sv_properties/")
-    with open(f"./data/sv_properties/{name}.properties", "w") as f:
-        f.write(write_str)
+    return __file_output(name, write_str)
+
+
+def __file_output(name, write_str, roop_count=0):
+    try:
+        with open(f"./data/sv_properties/{name}.properties", "x") as f:
+            f.write(write_str)
+            return roop_count
+    except FileExistsError:
+        if roop_count >= 1:
+            name = name[:-(len(str(roop_count+1))+2)]
+        roop_count += 1
+        return __file_output(f"{name}({roop_count})",write_str, roop_count)
+
 
 def load_file(name, func):
     return_dict = {}

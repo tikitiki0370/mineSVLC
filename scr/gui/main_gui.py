@@ -41,8 +41,3 @@ class AppMain(ttk.Frame):
         note.add(self.svc,text="プロパティ")
         note.add(self.wls,text="ホワイトリスト")
         note.add(self.ops,text="OPリスト")
-
-
-
-
-

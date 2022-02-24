@@ -66,6 +66,8 @@ class BuildSV():
             rename("./server/temp", f"./server/{dir_name}")
         except FileExistsError:
             self.rename_er += 1
+            if self.rename_er >=2:
+                dir_name = dir_name[:-(len(str(self.rename_er))+2)]
             self._rename_dir(f"{dir_name}({self.rename_er})")
 
     def _set_property(self, name):

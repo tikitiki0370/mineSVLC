@@ -142,8 +142,11 @@ class AppSvc(ttk.Frame):
         payload = {}
         for i in self.vlr_dict:
             payload[i] = self.vlr_dict[i].get()
-        build_svpr(self.pjname.get(), payload)
-        messagebox.showinfo("", "作成しました")
+        roop_count = build_svpr(self.pjname.get(), payload)
+        if roop_count == 0:
+            messagebox.showinfo("", "作成しました")
+        else:
+            messagebox.showinfo("", f"同じ名前が存在したため{self.pjname.get()}({roop_count})として作成しました")
         self.__build_objls()
         self._update_cnf_ls()
 
