@@ -4,7 +4,11 @@ from scr.gui.main_gui import AppMain
 import tkinter as tk
 import scr.lib.setups as setup
 
-
+###build用インポート###
+import email
+import http
+import http.client
+####################
 
 if __name__ == '__main__':
     try:
