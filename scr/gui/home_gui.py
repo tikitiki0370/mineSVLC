@@ -209,7 +209,7 @@ class AppHome(ttk.Frame):
                 self.svver.get(),
                 self.svmemmin.get(),
                 self.svmemmax.get(),
-                self.worldpath.get(),
+                world_path=self.worldpath.get(),
                 server_property=self.svcnf.get(),
                 server_ops=self.ops.get(),
                 server_whitelist=self.whitelist.get(),
