@@ -7,3 +7,6 @@ class AppRes(ttk.Frame):
         super().__init__(master, width=width, height=height)
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
+
+    def set_default_value(self):
+        pass
