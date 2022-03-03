@@ -1,6 +1,7 @@
 import tkinter as tk
 from json import JSONDecodeError
 from tkinter import font, messagebox, ttk
+from urllib.error import HTTPError
 
 from ..lib.ops import BuildOps
 
@@ -101,8 +102,10 @@ class AppOps(ttk.Frame):
             self.plrname.set("")
             self.plrlevel.set(1)
             self.plrbpl.set(False)
-        except JSONDecodeError:
+        except (JSONDecodeError, HTTPError):
             messagebox.showerror(message="プレイヤーが存在しません")
+        except:
+            messagebox.showerror(message="不明なエラーです")
 
     def set_plr_del(self):
         plr_dellabel = ttk.Button(self.plr_del, text="削除", command=self._delbutton)
@@ -118,8 +121,10 @@ class AppOps(ttk.Frame):
             self.plrname.set("")
             self.plrlevel.set(1)
             self.plrbpl.set(False)
-        except JSONDecodeError:
+        except (JSONDecodeError, HTTPError):
             messagebox.showerror(message="プレイヤーが存在しません")
+        except:
+            messagebox.showerror(message="不明なエラーです")
 
     def _update_tree(self,payload):
         for i in self.tree_obj.get_children():
