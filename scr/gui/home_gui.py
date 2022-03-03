@@ -118,7 +118,7 @@ class AppHome(ttk.Frame):
         sv_memspinbox_max = ttk.Spinbox(self.sv_mem, from_=512, to=20480, increment=512,
                                 textvariable=self.svmemmax, width=8, font=self.textbox, command=self._check_maxbox)
 
-        sv_checkbox_both = ttk.Checkbutton(self.sv_mem, variable=self.svmemboth, text="値をそろえる")
+        sv_checkbox_both = ttk.Checkbutton(self.sv_mem, variable=self.svmemboth, text="値をそろえる", command=self._check_maxbox)
 
         sv_memlabel.grid(row=0, column=0, sticky=tk.W)
         sv_memspinbox_min.grid(row=1, column=0)
