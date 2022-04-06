@@ -1,6 +1,7 @@
 import tkinter as tk
 from json import JSONDecodeError
 from tkinter import font, messagebox, ttk
+from urllib.error import HTTPError
 
 from ..lib.whitelist import BuildWls
 
@@ -71,8 +72,10 @@ class AppWls(ttk.Frame):
         try:
             self.build_wls.deta_add(self.plradd.get())
             self.build_wls.deta_collback(self._update_tree)
-        except JSONDecodeError:
+        except (JSONDecodeError, HTTPError):
             messagebox.showerror(message="プレイヤーが存在しません")
+        except:
+            messagebox.showerror(message="不明なエラーです")
         self.plradd.set("")
 
     def set_plr_del(self):
@@ -90,8 +93,10 @@ class AppWls(ttk.Frame):
         try:
             self.build_wls.deta_del(self.plrdel.get())
             self.build_wls.deta_collback(self._update_tree)
-        except JSONDecodeError:
+        except (JSONDecodeError, HTTPError):
             messagebox.showerror(message="プレイヤーが存在しません")
+        except:
+            messagebox.showerror(message="不明なエラーです")
         self.plrdel.set("")
 
     def _update_tree(self,payload):

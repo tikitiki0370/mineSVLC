@@ -30,6 +30,7 @@ class AppHome(ttk.Frame):
         self.st_sets = ttk.Frame(self.st)
 
         self.svcsnap = tk.BooleanVar()
+        self.svmemboth = tk.BooleanVar()
         self.svver = tk.StringVar()
         self.svcnf = tk.StringVar()
         self.pjname = tk.StringVar()
@@ -42,7 +43,10 @@ class AppHome(ttk.Frame):
         self.progles = tk.IntVar()
 
 
+
+
         self.svver.set("選択してください")
+        self.svmemboth.set(False)
         self.svmemmin.set(1024)
         self.svmemmax.set(1024)
 
@@ -110,14 +114,26 @@ class AppHome(ttk.Frame):
         sv_memlabel = ttk.Label(self.sv_mem, text="メモリ", font=self.label)
         sv_mem_minmax = ttk.Label(self.sv_mem, text="～")
         sv_memspinbox_min = ttk.Spinbox(self.sv_mem, from_=512, to=20480, increment=512,
-                                textvariable=self.svmemmin, width=8, font=self.textbox)
+                                textvariable=self.svmemmin, width=8, font=self.textbox, command=self._check_minbox)
         sv_memspinbox_max = ttk.Spinbox(self.sv_mem, from_=512, to=20480, increment=512,
-                                textvariable=self.svmemmax, width=8, font=self.textbox)
-        
+                                textvariable=self.svmemmax, width=8, font=self.textbox, command=self._check_maxbox)
+
+        sv_checkbox_both = ttk.Checkbutton(self.sv_mem, variable=self.svmemboth, text="値をそろえる", command=self._check_maxbox)
+
         sv_memlabel.grid(row=0, column=0, sticky=tk.W)
         sv_memspinbox_min.grid(row=1, column=0)
         sv_mem_minmax.grid(row=1, column=1)
         sv_memspinbox_max.grid(row=1, column=2)
+        sv_checkbox_both.grid(row=1, column=3, padx=10)
+
+    def _check_minbox(self):
+        if self.svmemboth.get() == True:
+            self.svmemmax.set(self.svmemmin.get())
+
+    def _check_maxbox(self):
+        if self.svmemboth.get() == True:
+            self.svmemmin.set(self.svmemmax.get())
+
 
     def set_sv_world(self):
         sv_worldlabel = ttk.Label(self.sv_world, text="ワールドファイル")

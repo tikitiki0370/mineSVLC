@@ -1,4 +1,5 @@
 from tkinter import Menu, ttk
+import tkinter as tk
 
 from scr.gui.home_gui import AppHome
 from scr.gui.ops_gui import AppOps
@@ -28,6 +29,10 @@ class AppMain(ttk.Frame):
         menuber.add_cascade(label="ファイル", menu=filemenu)
         self.master.config(menu=menuber)
 
+    def set_option(self):
+        
+        tk.Toplevel(self.master, )
+        pass
 
     def set_note(self):
         note = ttk.Notebook(self.master)
