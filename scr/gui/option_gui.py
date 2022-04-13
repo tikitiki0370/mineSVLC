@@ -9,6 +9,8 @@ class OptionsGui(ttk.Frame):
         height = 600
         super().__init__(master,width=width, height=height)
 
+    
+
 if __name__ == "__main__":
     
     root = tk.Tk()

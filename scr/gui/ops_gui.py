@@ -2,6 +2,8 @@ import tkinter as tk
 from json import JSONDecodeError
 from tkinter import font, messagebox, ttk
 from urllib.error import HTTPError
+from glob import glob
+
 
 from ..lib.ops import BuildOps
 
@@ -50,16 +52,22 @@ class AppOps(ttk.Frame):
         self.set_save_file()
         self.set_place()
 
+    def _update_filenames(self):
+        value = [i[11:i.index(".", 11)] for i in glob("./data/ops/*.json")]
+        self.pj_nametextbox["values"] = value
+
     def set_pj_name(self):
         pj_namelabel = ttk.Label(self.pj_name, text="ファイル名", font=self.label)
-        pj_nametextbox = ttk.Entry(self.pj_name, width=30, textvariable=self.pjname, font=self.textbox)
+        self.pj_nametextbox = ttk.Combobox(self.pj_name, width=30, textvariable=self.pjname, font=self.textbox, postcommand=self._update_filenames)
         pj_namebutton = ttk.Button(self.pj_name, text="開く",command=self._openbutton)
-        
+
+        self.pj_nametextbox.bind('<<ComboboxSelected>>', self._openbutton)
+
         pj_namelabel.grid(row=0, column=0, sticky=tk.W)
-        pj_nametextbox.grid(row=1,column=0)
+        self.pj_nametextbox.grid(row=1,column=0)
         pj_namebutton.grid(row=1,column=1)
 
-    def _openbutton(self):
+    def _openbutton(self, *arg):
         self.build_ops = BuildOps()
         self.openfile_flag = True
         self.build_ops.load_whitelist(self.pjname.get())

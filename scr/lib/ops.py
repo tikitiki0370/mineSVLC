@@ -19,6 +19,11 @@ class BuildOps():
             self.file.close()
         except:
             pass
+        try:
+            if not self.file_name_log:
+                self.create_ops(self.file_name_log)
+        except:
+            pass
 
     def load_whitelist(self, file_name):
         self.__file_close()
@@ -32,6 +37,7 @@ class BuildOps():
 
     def _open_editfile(self, file_name, loop_count=0):
         self.__file_close()
+        self.file_name_log = file_name
         if not exists("./data/ops"):
             mkdir("./data/ops")
             self.file = open(f"./data/ops/{file_name}.json", mode="w")
@@ -77,3 +83,4 @@ class BuildOps():
         self.file.close()
         self.file = None
         self.write_data = []
+        self.file_name_log = ""
