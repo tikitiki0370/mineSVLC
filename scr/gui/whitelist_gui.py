@@ -2,6 +2,8 @@ import tkinter as tk
 from json import JSONDecodeError
 from tkinter import font, messagebox, ttk
 from urllib.error import HTTPError
+from glob import glob
+
 
 from ..lib.whitelist import BuildWls
 
@@ -42,16 +44,22 @@ class AppWls(ttk.Frame):
         self.set_save_file()
         self.set_place()
 
+    def _update_filenames(self):
+        value = [i[17:i.index(".", 17)] for i in glob("./data/whitelist/*.json")]
+        self.pj_nametextbox["values"] = value
+
     def set_pj_name(self):
         pj_namelabel = ttk.Label(self.pj_name, text="ファイル名", font=self.label)
-        pj_nametextbox = ttk.Entry(self.pj_name, width=30, textvariable=self.pjname, font=self.textbox)
+        self.pj_nametextbox = ttk.Combobox(self.pj_name, width=30, textvariable=self.pjname, font=self.textbox,  postcommand=self._update_filenames)
         pj_namebutton = ttk.Button(self.pj_name, text="開く",command=self._openbutton)
-        
+
+        self.pj_nametextbox.bind('<<ComboboxSelected>>', self._openbutton)
+
         pj_namelabel.grid(row=0, column=0, sticky=tk.W)
-        pj_nametextbox.grid(row=1,column=0)
+        self.pj_nametextbox.grid(row=1,column=0)
         pj_namebutton.grid(row=1,column=1)
 
-    def _openbutton(self):
+    def _openbutton(self, *arg):
         self.build_wls = BuildWls()
         self.openfile_flag = True
         self.build_wls.load_whitelist(self.pjname.get())
@@ -106,10 +114,17 @@ class AppWls(ttk.Frame):
         for value in payload:
             self.tree_obj.insert("","end",value=[value["name"], value["uuid"]])
 
+    def _tree_viw(self,event):
+        data = self.tree_obj.focus()
+        data = self.tree_obj.item(data, "values")
+        self.plrdel.set(data[0])
+
+
     def set_tree_viw(self):
         self.tree_obj = ttk.Treeview(self.tree_viw, height=15)
         self.tree_obj["column"] = (1,2)
         self.tree_obj["show"] = "headings"
+        self.tree_obj.bind("<<TreeviewSelect>>", self._tree_viw)
 
         self.tree_obj.heading(1,text="プレイヤー名")
         self.tree_obj.heading(2,text="uuid")

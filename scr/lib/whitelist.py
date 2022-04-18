@@ -15,12 +15,18 @@ class BuildWls():
 
     def __file_close(self):
         try:
+            if self.file_name_log:
+                self.create_wls(self.file_name_log)
+        except:
+            pass
+        try:
             self.file.close()
         except:
             pass
 
     def load_whitelist(self, file_name):
         self.__file_close()
+        self.file_name_log = file_name
         self.file = open(f"./data/whitelist/{file_name}.json", mode="r")
         try:
             self.write_data = load(self.file)
@@ -73,6 +79,7 @@ class BuildWls():
         if not self.file:
             self.loop_count = self._open_editfile(file_name)
         dump(self.write_data, self.file, indent=4)
+        self.file_name_log = ""
         self.file.close()
         self.file = None
         self.write_data = []
