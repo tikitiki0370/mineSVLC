@@ -8,11 +8,6 @@ from urllib.request import urlopen, urlretrieve
 
 class BuildSV():
     def __init__(self):
-        try:
-            makedirs("./server/temp")
-        except FileExistsError:
-            rmtree("./server/temp")
-            makedirs("./server/temp")
         self.rename_er = 0
         self.download_count = 0
         self.download_blocksize = 0
@@ -29,6 +24,7 @@ class BuildSV():
 
     def _file_download(self, download_path, server_version):
         # サーバーダウンロードpath取得
+
         data = loads(urlopen(download_path).read().decode("utf8"))
         download_path = data["downloads"]["server"]["url"]
         download_hash = data["downloads"]["server"]["sha1"]
@@ -93,6 +89,10 @@ class BuildSV():
     def sv_build(self, folder_name, file_url, server_version, memor_min, memor_max,
                  arg_jvm=None, server_property=None, world_path=None, server_ops=None, server_whitelist=None, set_bef=None, set_aft=None, collback=None):
         self.collbackpoint = collback
+        try:
+            makedirs("./server/temp")
+        except:
+            pass
         self._file_download(file_url, server_version)
         self._mkbatfile(memor_min, memor_max, set_bef, set_aft)
         self._set_worldfile(world_path)
